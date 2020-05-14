@@ -18,12 +18,13 @@ from win32api import GetSystemMetrics
 import systemFunc
 from tkinter.ttk import *
 import CIFARextract
+from PIL import Image
 
 
 
 
 #============= GET THE DATAS ===============
-
+"""
 def buttonLaunch():
     global dataSet
     dataSet = choice1.get()
@@ -50,4 +51,13 @@ exitbtn.grid(column=1, row=4)
 
 
 dataWindow.mainloop()
+"""
+#============= EXTRACT DATASET ===============
+dataSet = "CIFAR-10"
+if dataSet=="CIFAR-10":
+    trainDict = CIFARextract.extractBatch(1)
+    trainData = CIFARextract.extractData(trainDict)
+    trainImage = CIFARextract.extractImage(598,trainData)
+    img = Image.fromarray(trainImage,'RGB')
+
 
